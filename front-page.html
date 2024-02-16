@@ -137,7 +137,7 @@
         background-color: #333;
         color: #fff;
     }
-
+    
     .button-container {
         display: flex;
         justify-content: flex-end; /* Shift buttons to the right */
@@ -253,14 +253,15 @@
         <ul>
             <li><h1><a href="#">Home</a></h1></li>
             <li>
-                <h4><a href="#">Categories</a></h4>
-                <select id="sort-by">
-                <ul>
-                    <li><option value="sports">Sports</option></li>
-                    <li><option value="electronics">Electronics</option></li>
-                    <li><option value="books">Books</option></li>
-                </ul>
-                </select>
+                <h2><a href="#">Categories</a></h2>
+                <div class="categories-dropdown">
+                    <select id="sort-by-category">
+                    <ul>
+                        <li><option value="sports">Sports</option></li>
+                        <li><option value="electronics">Electronics</option></li>
+                        <li><option value="books">Books</option></li>
+                    </ul>
+                    </select>
             </li>
         </ul>
     </div>

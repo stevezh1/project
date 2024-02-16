@@ -4,27 +4,151 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simple E-commerce Website</title>
+<link rel="stylesheet" href="styles.css">
+</head>
 <style>
     body {
         font-family: Arial, sans-serif;
+        height:100%;
         margin: 0;
         padding: 0;
+        overflow-y: auto;
     }
-    header {
+    
+    
+    .container {
+        position: relative;
+        z-index: 1;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 20px;
+        overflow: hidden;
+    }
+
+    #category {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+  }
+
+    .header-container {
         background-color: #333;
         color: #fff;
-        padding: 10px 0;
+        padding: 15px 0;
+        text-align: center; /* Center align text */
+        justify-content: space-between; 
+        width: 100%; /* Set width to 100% */
+    }
+
+    .header-item {
+        display: inline-block; /* Allow inline positioning */
+        margin: 0 10px;
+    }
+
+    .shift-right {
+        margin-left: auto; /* Push items to the right */
+    }
+
+    .sort-by {
+        position: relative; /* Enable positioning */
+        float: right; /* Float the container to the right */
+        margin-right: 20px; /* Adjust margin as needed */
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Vertically center items */
+    }
+
+    .sidebar {
+        position: fixed; /* Position sidebar fixed */
+        top: 0; /* Align to the top of the screen */
+        left: 0; /* Align to the left side of the screen */
+        width: 250px; /* Set width as needed */
+        height: 100%; /* Occupy entire height of the screen */
+        background-color: #00008B; /* Background color */
+        padding: 20px; /* Add padding as needed */
+        box-sizing: border-box; /* Include padding in the total width/height */
+    }
+
+    .sidebar h2 {
+        color: #fff;
         text-align: center;
     }
-    .container {
-        margin: 20px auto;
-        max-width: 1200px;
-        padding: 0 20px;
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
     }
+
+    .sidebar ul li {
+        padding: 10px 0;
+    }
+
+    .sidebar ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .sidebar ul li a:hover {
+        color: #00bcd4;
+    }
+
+    .content {
+        flex: 1;
+        padding: 14px;
+        min-height: 100vh;
+    }
+
+    .sort-by-dropdown {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        color: #fff;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: flex-end; /* Shift buttons to the right */
+    }
+
+    .add-button {
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+    .delete-button {
+        background-color: red;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .main-listings {
+        width: 75%; /* Adjust width as needed */
+        padding: 5px;
+        margin-top: 5px;
+        margin-left: auto; /* Shift container to the right */
+    }
+
     .product {
         float: left;
-        width: 30%;
-        margin: 0 1.66%;
+        width: 25%;
+        height: 300px;
+        margin: 10px;
         padding: 20px;
         border: 1px solid #ddd;
         box-sizing: border-box;
@@ -37,31 +161,109 @@
         margin-top: 0;
     }
 </style>
-</head>
+</head>     
 <body>
 
-<header>
-    <h1>Simple E-commerce Website</h1>
-</header>
-
+    <div class="header-container header-container-1">
+        <div class="header-item shift-right">
+            <header class="header-container">
+            </header>
+        </div>
+        <div class="header-item">
+            <header class="header-container">
+                <h1>Products</h1>
+            </header>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="sort-by-dropdown">
+                <h4>Sort By:</h4>
+                    <select id="sort-by">
+                        <option value="">Category</option>
+                        <option value="A-Z">Alphabetical (A-Z)</option>
+                        <option value="Z-A">Alphabetical (Z-A)</option>
+                        <option value="highest-price">Highest Price</option>
+                        <option value="lowest-price">Lowest Price</option>
+                        <option value="latest">Date Added (Latest)</option>
+                        <option value="earliest">Date Added (Earliest)</option>
+                    </select>
+        </div>
+    </div>
+    
+<!--sidebar-->
 <div class="container">
-    <div class="product">
-        <img src="product1.jpg" alt="Product 1">
-        <h2>Product 1</h2>
-        <p>$19.99</p>
-        <button>Add to Cart</button>
+    <div class="sidebar">
+        <ul>
+            <li><h1><a href="#">Home</a></h1></li>
+            <li><h1><a href="#">About</a></h1></li>
+            <li><h1><a href="#">Services</a></h1></li>
+            <li><h1><a href="#">Contact</a></h1></li>
+        </ul>
     </div>
-    <div class="product">
-        <img src="product2.jpg" alt="Product 2">
-        <h2>Product 2</h2>
-        <p>$24.99</p>
-        <button>Add to Cart</button>
+
+<div class="main-listings">
+    <button class="add-button" onclick="addProduct()">Add</button>
+    <button class="delete-button" onclick="deleteProduct()">Delete</button>
+    <div class="container">
+        <div class="product">
+            <img src="product1.jpg" alt="Product 1">
+            <h2>Product 1</h2>
+            <p>$19.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="product2.jpg" alt="Product 2">
+            <h2>Product 2</h2>
+            <p>$24.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="product3.jpg" alt="Product 3">
+            <h2>Product 3</h2>
+            <p>$29.99</p>
+            <button>Add to Cart</button>
+        </div>
     </div>
-    <div class="product">
-        <img src="product3.jpg" alt="Product 3">
-        <h2>Product 3</h2>
-        <p>$29.99</p>
-        <button>Add to Cart</button>
+    <div class="container">
+        <div class="product">
+            <img src="product1.jpg" alt="Product 1">
+            <h2>Product 1</h2>
+            <p>$19.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="product2.jpg" alt="Product 2">
+            <h2>Product 2</h2>
+            <p>$24.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="product3.jpg" alt="Product 3">
+            <h2>Product 3</h2>
+            <p>$29.99</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product">
+            <img src="product1.jpg" alt="Product 1">
+            <h2>Product 1</h2>
+            <p>$19.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="product2.jpg" alt="Product 2">
+            <h2>Product 2</h2>
+            <p>$24.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="product3.jpg" alt="Product 3">
+            <h2>Product 3</h2>
+            <p>$29.99</p>
+            <button>Add to Cart</button>
+        </div>
     </div>
 </div>
 

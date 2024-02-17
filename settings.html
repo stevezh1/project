@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-commerce Website</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        height:100%;
+        margin: 0;
+        padding: 0;
+        overflow-y: auto;
+    }
+    
+    
+    .container {
+        position: relative;
+        z-index: 1;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 20px;
+        overflow: hidden;
+    }
+
+    #category {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .header-container {
+        background-color: #333;
+        color: #fff;
+        padding: 15px 0;
+        text-align: center; /* Center align text */
+        justify-content: space-between; 
+        width: 100%; /* Set width to 100% */
+    }
+
+    .header-item {
+        display: inline-block; /* Allow inline positioning */
+        margin: 0 10px;
+    }
+
+    .shift-right {
+        margin-left: auto; /* Push items to the right */
+    }
+
+    .add-button {
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+    .delete-button {
+        background-color: red;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+    .update-button {
+        background-color: #00008B;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="header-container header-container-1">
+    <div class="header-item shift-right">
+
+<!--sidebar-->
+<div class="container">
+    <div class="sidebar">
+        <ul>
+            <li><h1><a href="front-page.html">Home</a></h1></li>
+            <li><h1><a href="settings.html">Settings</a></h1></li>
+                <li><h2><a href="#">Categories</a></h2></li>
+                <div class="categories-dropdown">
+                    <select id="sort-by-category" onchange="showCategory(this.value)">
+                    <ul>
+                        <li><option value="all">All</option></li>
+                        <li><option value="sports">Sports</option></li>
+                        <li><option value="electronics">Electronics</option></li>
+                        <li><option value="books">Books</option></li>
+                    </ul>
+                    </select>
+            </li>
+        </ul>
+    </div>
+</div>   
+
+<button class="add-button">Add Product</button>
+<button class="delete-button">Delete Product</button>
+<button class="update-button">Update Product</button>
+
+</body>
+</html>

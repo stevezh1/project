@@ -25,81 +25,81 @@
     background-color: #00008B;
     padding: 20px;
     box-sizing: border-box;
-}
+    }
 
-.sidebar h2 {
+    .sidebar h2 {
     color: #fff;
     text-align: center;
-}
+    }
 
-.sidebar ul {
+    .sidebar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-}
+    }
 
-.sidebar ul ul {
+    .sidebar ul ul {
     display: none;
     position: absolute;
     background-color: #00008B;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     padding: 10px;
     left: 0;
-}
+    }
 
-.sidebar ul li:hover > ul {
+    .sidebar ul li:hover > ul {
     display: block;
-}
+    }
 
-.sidebar ul li {
+    .sidebar ul li {
     padding: 0;
     margin: 0;
     list-style: none;
-}
+    }
 
-.sidebar ul li a {
+    .sidebar ul li a {
     color: #fff;
     text-decoration: none;
-}
+    }
 
-.sidebar ul li a:hover {
+    .sidebar ul li a:hover {
     color: #00bcd4;
-}
+    }
 
 /* Header styles */
-.header-container {
-    background-color: #333;
-    color: #fff;
-    padding: 15px 0;
-    text-align: center;
-    justify-content: space-between;
-    width: 100%;
-}
+    .header-container {
+        background-color: #333;
+        color: #fff;
+        padding: 15px 0;
+        text-align: center;
+        justify-content: space-between;
+        width: 100%;
+    }
 
-.header-item {
-    display: inline-block;
-    margin: 0 10px;
-}
+    .header-item {
+        display: inline-block;
+        margin: 0 10px;
+    }
 
     .shift-right {
-    margin-left: auto;
+        margin-left: auto;
     }
 
     .sort-by-dropdown {
-    position: absolute;
-    top: 0;
-    right: 20px;
-    z-index: 999;
-    color: #fff;
+        position: absolute;
+        top: 0;
+        right: 20px;
+        z-index: 999;
+        color: #fff;
     }
 
     .sort-by-dropdown select {
-    padding: 5px;
-    font-size: 14px;
-    border: none;
-    border-radius: 3px;
-    background-color: #333;
-    color: #fff;
+        padding: 5px;
+        font-size: 14px;
+        border: none;
+        border-radius: 3px;
+        background-color: #333;
+        color: #fff;
     }
 
     .add-button {
@@ -143,16 +143,6 @@
         <ul>
             <li><h1><a href="front-page.html">Home</a></h1></li>
             <li><h1><a href="settings.html">Settings</a></h1></li>
-                <li><h2><a href="#">Categories</a></h2></li>
-                <div class="categories-dropdown">
-                    <select id="sort-by-category" onchange="showCategory(this.value)">
-                    <ul>
-                        <li><option value="all">All</option></li>
-                        <li><option value="sports">Sports</option></li>
-                        <li><option value="electronics">Electronics</option></li>
-                        <li><option value="books">Books</option></li>
-                    </ul>
-                    </select>
             </li>
         </ul>
     </div>

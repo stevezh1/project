@@ -325,6 +325,7 @@
         </div>
         <div class="form-field">
             <input type="submit" value="Add Product" id="addProductBtn">
+            <span id="addProductAlert"></span>
         </div>
     </form>
 </div>
@@ -348,6 +349,7 @@
         </div>
         <div class="form-field">
             <input type="submit" value="Delete Product" id="deleteProductBtn">
+            <span id="deleteProductAlert"></span>
         </div>
     </form>
 </div>
@@ -371,6 +373,7 @@
         </div>
         <div class="form-field">
             <input type="submit" value="Update Product" id="updateProductBtn">
+            <span id="updateProductAlert"></span>
         </div>
     </form>
 </div>
@@ -383,6 +386,7 @@
 </body>
 </html>
 
+<script src="form-handling.js"></script>
 <script>
     // Get reference to the form elements
     const productForm = document.getElementById('productForm');
@@ -406,4 +410,37 @@
         // Call a function to handle form submission (e.g., addProduct, updateProduct, deleteProduct)
         // Example: addProduct(productData);
     });
+
+    document.getElementById("productForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            try {
+                const response = await fetch("/products", {
+                    method: "POST",
+                    body: formData
+                });
+                if (response.ok) {
+                    window.location.href = "/front-page.html"; // Redirect to main page after successful submission
+                } else {
+                    console.error("Failed to add product");
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+        fetch('/products')
+            .then(response => response.json())
+            .then(products => {
+                // Get reference to the existing product list container
+                const existingProductList = document.getElementById('existingProductList');
+
+                // Create HTML elements for each new product and append them to the existing list
+                products.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.innerHTML = `<h3>${product.name}</h3><p>Price: ${product.price}</p>`;
+                    existingProductList.appendChild(productElement);
+                });
+            })
+            .catch(error => console.error('Error fetching products:', error));
 </script>

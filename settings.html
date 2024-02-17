@@ -14,7 +14,45 @@
         padding: 0;
         overflow-y: auto;
     }
-    
+
+    .form-container {
+        width: 50%;
+        margin: 10px auto; /* Center the form horizontally */
+        padding: 20px;
+        border: 1px solid #333;
+        box-sizing: border-box;
+    }
+
+
+    .form-field {
+        margin-bottom: 10px;
+    }
+
+    .form-field label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-field input[type="text"],
+    .form-field textarea {
+        width: calc(100% - 12px);
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .form-field textarea {
+        height: 80px;
+    }
+
+    .form-field input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
     
     .container {
         position: relative;
@@ -263,6 +301,30 @@
             <li><h1><a href="settings.html">Settings</a></h1></li>
         </ul>
     </div>
+</div>
+
+<div class="form-container">
+    <form id="productForm">
+        <div class="form-field">
+            <label for="imageURL">Image URL:</label>
+            <input type="text" id="imageURL" name="imageURL" required>
+        </div>
+        <div class="form-field">
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" required>
+        </div>
+        <div class="form-field">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-field">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+        </div>
+        <div class="form-field">
+            <input type="submit" value="Add Product">
+        </div>
+    </form>
 </div>
 
 <div class="main-listings">

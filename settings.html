@@ -16,41 +16,90 @@
     }
     
     
-    .container {
-        position: relative;
-        z-index: 1;
-        max-width: 1600px;
-        margin: 0 auto;
-        padding: 0 20px;
-        overflow: hidden;
-    }
+    .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #00008B;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
-    #category {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 16px;
-    }
+.sidebar h2 {
+    color: #fff;
+    text-align: center;
+}
 
-    .header-container {
-        background-color: #333;
-        color: #fff;
-        padding: 15px 0;
-        text-align: center; /* Center align text */
-        justify-content: space-between; 
-        width: 100%; /* Set width to 100% */
-    }
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
-    .header-item {
-        display: inline-block; /* Allow inline positioning */
-        margin: 0 10px;
-    }
+.sidebar ul ul {
+    display: none;
+    position: absolute;
+    background-color: #00008B;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    left: 0;
+}
+
+.sidebar ul li:hover > ul {
+    display: block;
+}
+
+.sidebar ul li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    color: #00bcd4;
+}
+
+/* Header styles */
+.header-container {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header-item {
+    display: inline-block;
+    margin: 0 10px;
+}
 
     .shift-right {
-        margin-left: auto; /* Push items to the right */
+    margin-left: auto;
+    }
+
+    .sort-by-dropdown {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    z-index: 999;
+    color: #fff;
+    }
+
+    .sort-by-dropdown select {
+    padding: 5px;
+    font-size: 14px;
+    border: none;
+    border-radius: 3px;
+    background-color: #333;
+    color: #fff;
     }
 
     .add-button {

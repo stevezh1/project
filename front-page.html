@@ -236,7 +236,7 @@
         padding: 10px; /* Adjust padding as needed */
         font-size: 16px; /* Optional: adjust font size */
     }
-    
+
 </style>
 </head>     
 <body>
@@ -247,6 +247,7 @@
                 <div class="sort-by-dropdown">
                     <h4>Sort By:</h4>
                     <select id="sort-by">
+                        <option value="unsorted">Unsorted</option>
                         <option value="A-Z">Alphabetical (A-Z)</option>
                         <option value="Z-A">Alphabetical (Z-A)</option>
                         <option value="highest-price">Highest Price</option>
@@ -274,6 +275,7 @@
                 <div class="categories-dropdown">
                     <select id="sort-by-category">
                     <ul>
+                        <li><option value="all">All</option></li>
                         <li><option value="sports">Sports</option></li>
                         <li><option value="electronics">Electronics</option></li>
                         <li><option value="books">Books</option></li>
@@ -351,4 +353,61 @@
 </body>
 </html>
 
+<script>
+    // Define addProduct, deleteProduct, and updateProduct functions here...
 
+    // Function to handle change event on category dropdown
+    document.getElementById('sort-by-category').addEventListener('change', function() {
+        const category = this.value;
+        const productContainers = document.querySelectorAll('.product');
+
+        // Hide all product containers    
+        productContainers.forEach(container => {
+            container.style.display = 'none';
+        });
+
+        // Show product containers based on selected category
+        if (category) {
+            const selectedProducts = document.querySelectorAll(`.${category}`);
+            selectedProducts.forEach(product => {
+                product.style.display = 'block';
+            });
+        } else {
+            // If no category selected, show all products
+            productContainers.forEach(container => {
+                container.style.display = 'block';
+            });
+        }
+    });
+
+    // Function to add a product
+    function addProduct() {
+        const productData = {
+            name: 'New Product',
+            price: 29.99,
+            description: 'This is a new product'
+        };
+
+        // Perform a POST request using fetch API
+        fetch('/api/addProduct', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productData) // Convert object to JSON string
+        })
+        .then(response => {
+            if (response.ok) {
+                // Request was successful, handle success response
+                console.log('Product added successfully');
+            } else {
+                // Request failed, handle error response
+                console.error('Failed to add product');
+            }
+        })
+        .catch(error => {
+            // Handle network errors or other exceptions
+            console.error('Error:', error);
+        });
+    }
+</script>

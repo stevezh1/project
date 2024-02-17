@@ -259,20 +259,22 @@
         margin-bottom: 10px;
     }
 
-    .categories-dropdown {
-        background-color: #00008B; /* Same color as the sidebar */
-        padding: 10px; /* Add padding to match the sidebar */
-        border-radius: 4px; /* Optional: add border-radius for consistency */
+    /* Red Button */
+    #addProductBtn {
+    background-color: green;
+    color: white;
     }
 
-    .category-button {
-        width: 100%;
-        background-color: #00008B; /* Same color as the sidebar */
-        color: #fff; /* Optional: adjust text color for visibility */
-        border: none;
-        border-radius: 4px; /* Optional: add border-radius for consistency */
-        padding: 10px; /* Adjust padding as needed */
-        font-size: 24px; /* Optional: adjust font size */
+    /* Yellow Button */
+    #deleteProductBtn {
+    background-color: darkred;
+    color: white
+    }
+
+    /* Blue Button */
+    #updateProductBtn {
+    background-color: orange;
+    color: white;
     }
 
 </style>
@@ -322,7 +324,7 @@
             <textarea id="description" name="description" required></textarea>
         </div>
         <div class="form-field">
-            <input type="submit" value="Add Product">
+            <input type="submit" value="Add Product" id="addProductBtn">
         </div>
     </form>
 </div>
@@ -345,7 +347,7 @@
             <textarea id="description" name="description" required></textarea>
         </div>
         <div class="form-field">
-            <input type="submit" value="Delete Product">
+            <input type="submit" value="Delete Product" id="deleteProductBtn">
         </div>
     </form>
 </div>
@@ -368,7 +370,7 @@
             <textarea id="description" name="description" required></textarea>
         </div>
         <div class="form-field">
-            <input type="submit" value="Update Product">
+            <input type="submit" value="Update Product" id="updateProductBtn">
         </div>
     </form>
 </div>
@@ -380,3 +382,28 @@
 
 </body>
 </html>
+
+<script>
+    // Get reference to the form elements
+    const productForm = document.getElementById('productForm');
+    const imageURLInput = document.getElementById('imageURL');
+    const priceInput = document.getElementById('price');
+    const nameInput = document.getElementById('name');
+    const descriptionInput = document.getElementById('description');
+
+    // Add event listener to the form submission
+    productForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Collect form data
+        const productData = {
+            imageURL: imageURLInput.value,
+            price: priceInput.value,
+            name: nameInput.value,
+            description: descriptionInput.value
+        };
+
+        // Call a function to handle form submission (e.g., addProduct, updateProduct, deleteProduct)
+        // Example: addProduct(productData);
+    });
+</script>
